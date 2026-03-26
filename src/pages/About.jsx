@@ -22,7 +22,7 @@ export default function About() {
           </span>
           <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl text-charcoal font-light mb-8 leading-tight">
             Merangkai Cerita, <br />
-            <span className="italic text-copper">Menyatukan Rasa</span>
+            <span className="italic text-copper">Mengabadikan Kisah</span>
           </h1>
           <p className="font-sans text-smoke text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
             Kami percaya bahwa undangan bukan sekadar secarik kertas atau tautan digital. Ia adalah sapaan pertama dari hari bahagia Anda, sebuah cenderamata yang akan disimpan sebagai kenangan.
@@ -56,7 +56,7 @@ export default function About() {
                 Kisah Kertas lahir dari sebuah ruang kerja kecil di sudut kota, berawal dari kecintaan kami pada seni kertas, tipografi, dan cerita-cerita romantis. Kami menyadari bahwa di era yang serba cepat ini, sentuhan personal seringkali terlupakan.
               </p>
               <p>
-                Nama "Kisah Kertas" sendiri dipilih karena kami ingin mengembalikan esensi dari sebuah undangan: sebagai surat yang membawa rasa bahagia, harapan, dan doa dari kedua mempelai kepada orang-orang terkasih.
+                Nama "Kisah Kertas" sendiri dipilih karena kami ingin mengembalikan esensi dari sebuah undangan: sebagai lembaran kertas yang membawa kisah bahagia, harapan, dan doa dari kedua mempelai kepada orang-orang terkasih.
               </p>
               <p>
                 Setiap lipatan kertas, setiap guratan tinta emas, dan setiap piksel dalam desain digital kami kerjakan dengan ketelitian tingkat tinggi. Karena bagi kami, karya yang baik adalah karya yang memiliki jiwa.
@@ -65,7 +65,7 @@ export default function About() {
             
             <div className="mt-12 pt-8 border-t-[0.5px] border-copper/30">
               <p className="font-serif italic text-2xl text-charcoal">
-                "Karena setiap undangan adalah rasa yang ingin kamu sampaikan."
+                "Karena setiap undangan adalah kisah yang ingin kamu sampaikan."
               </p>
             </div>
           </div>

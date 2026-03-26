@@ -249,7 +249,8 @@ export default function Portfolio() {
     type: item.type === 'fisik' ? 'Undangan Fisik' : 'Undangan Digital',
     desc: `${item.date} • ${item.location}`,
     bg: 'bg-sand',
-    imageUrl: item.imageUrl
+    imageUrl: item.imageUrl,
+    demoUrl: item.demoUrl
   })), ...portfolioItems];
 
   return (
@@ -293,6 +294,11 @@ export default function Portfolio() {
                   <div className="relative z-0 w-full max-w-[220px] h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
                     {item.imageUrl ? (
                       <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover shadow-xl" referrerPolicy="no-referrer" />
+                    ) : item.type === 'Undangan Digital' ? (
+                      <div className="w-full h-full flex flex-col items-center justify-center border-[0.5px] border-charcoal/20 bg-ivory p-4 shadow-xl">
+                         <span className="font-serif text-2xl text-charcoal mb-2 text-center">{item.title}</span>
+                         <span className="font-sans text-[10px] uppercase tracking-widest text-smoke">Digital Preview</span>
+                      </div>
                     ) : (
                       item.mockup
                     )}
@@ -369,7 +375,11 @@ export default function Portfolio() {
                   </div>
                   {/* Screen */}
                   <div className="w-full h-full bg-ivory rounded-[2rem] overflow-y-auto no-scrollbar relative">
-                    {selectedItem.interactivePreview}
+                    {selectedItem.demoUrl ? (
+                      <iframe src={selectedItem.demoUrl} className="w-full h-full border-none" title="Demo Undangan Digital" />
+                    ) : (
+                      selectedItem.interactivePreview
+                    )}
                   </div>
                 </div>
               ) : (

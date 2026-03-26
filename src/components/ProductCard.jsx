@@ -24,7 +24,7 @@ export default function ProductCard({ product }) {
     );
   };
 
-  return (
+  const CardContent = (
     <div className="group flex flex-col bg-ivory border-[0.5px] border-sand hover:border-copper hover:-translate-y-1.5 hover:shadow-[8px_8px_0_rgba(181,129,58,0.1)] transition-all duration-300 ease-in-out cursor-pointer h-full">
       {/* Thumbnail */}
       <div 
@@ -44,8 +44,17 @@ export default function ProductCard({ product }) {
           </div>
         )}
 
-        {/* Mockup SVG */}
-        {renderMockup(product)}
+        {/* Mockup SVG or Image */}
+        {product.imageUrl ? (
+          <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover shadow-md" referrerPolicy="no-referrer" />
+        ) : product.type === 'digital' ? (
+          <div className="w-full h-full flex flex-col items-center justify-center border-[0.5px] border-charcoal/20 bg-ivory p-4 shadow-md">
+            <span className="font-serif text-2xl text-charcoal mb-2 text-center">{product.name}</span>
+            <span className="font-sans text-[10px] uppercase tracking-widest text-smoke">Digital Preview</span>
+          </div>
+        ) : (
+          renderMockup(product)
+        )}
       </div>
 
       {/* Info */}
@@ -60,12 +69,24 @@ export default function ProductCard({ product }) {
         
         <div className="flex items-end justify-between mt-auto pt-4 border-t-[0.5px] border-sand">
           <div>
-            <p className="font-sans text-sm font-medium text-charcoal">{product.price}</p>
-            <p className="font-sans text-[10px] text-smoke">{product.priceSub}</p>
+            <p className="font-sans text-sm font-medium text-charcoal">
+              {typeof product.price === 'number' ? `Rp ${product.price.toLocaleString('id-ID')}` : product.price}
+            </p>
+            <p className="font-sans text-[10px] text-smoke">{product.priceSub || (product.type === 'fisik' ? '/lembar' : '/desain')}</p>
           </div>
           <ArrowRight size={18} className="text-copper transform group-hover:translate-x-1 transition-transform duration-300" />
         </div>
       </div>
     </div>
   );
+
+  if (product.demoUrl) {
+    return (
+      <a href={product.demoUrl} target="_blank" rel="noopener noreferrer" className="block h-full">
+        {CardContent}
+      </a>
+    );
+  }
+
+  return CardContent;
 }

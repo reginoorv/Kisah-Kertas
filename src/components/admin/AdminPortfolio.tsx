@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
-import { Edit2, Trash2, Plus, X } from 'lucide-react';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { db, storage } from '../../lib/firebase';
+import { Edit2, Trash2, Plus, X, Upload } from 'lucide-react';
 
 interface PortfolioItem {
   id: string;
   coupleName: string;
   date: string;
   location: string;
-  imageUrl: string;
+  imageUrl?: string;
+  demoUrl?: string;
   type: 'fisik' | 'digital';
 }
 
@@ -17,6 +19,8 @@ export default function AdminPortfolio() {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
   
   // Form state
   const [formData, setFormData] = useState({
@@ -24,6 +28,7 @@ export default function AdminPortfolio() {
     date: '',
     location: '',
     imageUrl: '',
+    demoUrl: '',
     type: 'fisik'
   });
 
@@ -53,7 +58,8 @@ export default function AdminPortfolio() {
         coupleName: item.coupleName,
         date: item.date,
         location: item.location,
-        imageUrl: item.imageUrl,
+        imageUrl: item.imageUrl || '',
+        demoUrl: item.demoUrl || '',
         type: item.type
       });
       setEditingId(item.id);
@@ -63,10 +69,12 @@ export default function AdminPortfolio() {
         date: '',
         location: '',
         imageUrl: '',
+        demoUrl: '',
         type: 'fisik'
       });
       setEditingId(null);
     }
+    setImageFile(null);
     setIsModalOpen(true);
   };
 
@@ -77,11 +85,29 @@ export default function AdminPortfolio() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setUploading(true);
     try {
+      let finalImageUrl = formData.imageUrl;
+
+      if (formData.type === 'fisik' && imageFile) {
+        const storageRef = ref(storage, `portofolio/${Date.now()}_${imageFile.name}`);
+        const snapshot = await uploadBytes(storageRef, imageFile);
+        finalImageUrl = await getDownloadURL(snapshot.ref);
+      }
+
+      const dataToSave = {
+        coupleName: formData.coupleName,
+        date: formData.date,
+        location: formData.location,
+        type: formData.type,
+        imageUrl: formData.type === 'fisik' ? finalImageUrl : '',
+        demoUrl: formData.type === 'digital' ? formData.demoUrl : ''
+      };
+
       if (editingId) {
-        await updateDoc(doc(db, 'portofolio', editingId), formData);
+        await updateDoc(doc(db, 'portofolio', editingId), dataToSave);
       } else {
-        await addDoc(collection(db, 'portofolio'), formData);
+        await addDoc(collection(db, 'portofolio'), dataToSave);
       }
       
       handleCloseModal();
@@ -89,6 +115,8 @@ export default function AdminPortfolio() {
     } catch (error) {
       console.error("Error saving item:", error);
       alert("Gagal menyimpan data.");
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -222,24 +250,48 @@ export default function AdminPortfolio() {
                 </div>
               </div>
 
-              <div>
-                <label className="block font-sans text-xs font-medium uppercase tracking-widest text-charcoal mb-2">URL Gambar</label>
-                <input 
-                  type="url" 
-                  value={formData.imageUrl} 
-                  onChange={e => setFormData({...formData, imageUrl: e.target.value})}
-                  className="w-full border-b border-sand bg-transparent py-2 font-sans text-charcoal focus:outline-none focus:border-copper"
-                  placeholder="https://..."
-                  required 
-                />
-              </div>
+              {formData.type === 'fisik' ? (
+                <div>
+                  <label className="block font-sans text-xs font-medium uppercase tracking-widest text-charcoal mb-2">Upload Gambar</label>
+                  <div className="relative border-[0.5px] border-dashed border-charcoal/30 p-4 flex flex-col items-center justify-center hover:border-copper transition-colors cursor-pointer">
+                    <input 
+                      type="file" 
+                      accept="image/*"
+                      onChange={e => {
+                        if (e.target.files && e.target.files[0]) {
+                          setImageFile(e.target.files[0]);
+                        }
+                      }}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      required={!editingId && !formData.imageUrl && formData.type === 'fisik'}
+                    />
+                    <Upload size={24} className="text-smoke mb-2" />
+                    <span className="font-sans text-xs text-smoke text-center">
+                      {imageFile ? imageFile.name : formData.imageUrl ? 'Gambar sudah ada (Klik untuk ganti)' : 'Klik atau drag gambar ke sini'}
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <label className="block font-sans text-xs font-medium uppercase tracking-widest text-charcoal mb-2">URL Web Undangan</label>
+                  <input 
+                    type="url" 
+                    value={formData.demoUrl} 
+                    onChange={e => setFormData({...formData, demoUrl: e.target.value})}
+                    className="w-full border-b border-sand bg-transparent py-2 font-sans text-charcoal focus:outline-none focus:border-copper"
+                    placeholder="https://..."
+                    required 
+                  />
+                </div>
+              )}
 
               <div className="pt-6">
                 <button 
                   type="submit"
-                  className="w-full bg-charcoal text-ivory font-sans text-sm font-medium uppercase tracking-widest py-4 hover:bg-copper transition-colors"
+                  disabled={uploading}
+                  className="w-full bg-charcoal text-ivory font-sans text-sm font-medium uppercase tracking-widest py-4 hover:bg-copper transition-colors disabled:opacity-50"
                 >
-                  Simpan
+                  {uploading ? 'Menyimpan...' : 'Simpan'}
                 </button>
               </div>
             </form>

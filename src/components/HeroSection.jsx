@@ -4,9 +4,9 @@ export default function HeroSection() {
   const ref = useIntersection();
 
   return (
-    <section className="relative min-h-screen pt-24 lg:pt-0 flex flex-col lg:flex-row overflow-hidden" ref={ref}>
+    <section className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden" ref={ref}>
       {/* Left Column */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 md:px-16 lg:px-24 py-16 lg:py-0 z-10">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-32 pb-16 lg:pt-40 lg:pb-20 z-10">
         <h1 className="fade-up text-charcoal leading-[1.1] mb-8">
           <span className="block font-script text-5xl md:text-6xl lg:text-7xl mb-2 text-charcoal opacity-90">Ceritakan</span>
           <span className="block font-serif font-light text-[clamp(2.5rem,5vw,4rem)]">Kisah Cinta Kalian</span>

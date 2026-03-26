@@ -11,31 +11,31 @@ export default function Testimonials() {
     {
       quote: "Undangannya melebihi ekspektasi kami. Kertasnya mewah, semua tamu memuji. Tim Kisah Kertas sangat sabar dalam proses revisi.",
       name: "Aisha & Daffa",
-      location: "Bandung, Oktober 2024",
+      location: "Bandung",
       initials: "AD"
     },
     {
       quote: "Undangan digitalnya keren! Ada musik, animasi halus, dan RSVP memudahkan kami mendata tamu. Harganya sangat worth it.",
       name: "Risa & Nando",
-      location: "Jakarta, Januari 2025",
+      location: "Jakarta",
       initials: "RN"
     },
     {
       quote: "Pelayanan sangat ramah dan responsif. Desain undangan fisiknya benar-benar elegan dan sesuai dengan tema pernikahan kami.",
       name: "Bima & Sarah",
-      location: "Surabaya, Desember 2024",
+      location: "Surabaya",
       initials: "BS"
     },
     {
       quote: "Sangat puas dengan hasilnya! Detail emboss-nya rapi banget. Banyak teman yang tanya bikin undangan di mana.",
       name: "Kevin & Tasya",
-      location: "Bali, November 2024",
+      location: "Bali",
       initials: "KT"
     },
     {
       quote: "Proses pembuatannya cepat dan hasilnya memuaskan. Undangan digitalnya sangat interaktif dan mudah digunakan oleh tamu.",
       name: "Reza & Dina",
-      location: "Yogyakarta, Februari 2025",
+      location: "Yogyakarta",
       initials: "RD"
     }
   ];
@@ -69,8 +69,8 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto">
         <div className="fade-up text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl text-ivory font-light">
-            500+ Pasangan <br className="md:hidden" />
-            <span className="italic text-copper">Sudah Merasakan</span>
+            Klien Kami <br className="md:hidden" />
+            <span className="italic text-copper">Berbagi Cerita</span>
           </h2>
         </div>
 

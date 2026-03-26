@@ -7,7 +7,7 @@ export default function HowItWorks() {
     {
       num: "01",
       title: "Pilih Desain",
-      desc: "Pilih dari 100+ koleksi desain premium kami atau request custom desain sesuai tema pernikahan kalian."
+      desc: "Pilih dari koleksi desain premium kami atau request custom desain sesuai tema pernikahan kalian."
     },
     {
       num: "02",

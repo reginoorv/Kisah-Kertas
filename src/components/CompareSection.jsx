@@ -70,7 +70,7 @@ export default function CompareSection() {
       {/* CTA Strip */}
       <div className="max-w-7xl mx-auto mt-8 fade-up px-6 md:px-0">
         <a 
-          href="https://wa.me/6281234567890?text=Halo%20Surat%20Rasa!%20Saya%20bingung%20pilih%20fisik%20atau%20digital,%20boleh%20konsultasi?"
+          href="https://wa.me/6281234567890?text=Halo%20Kisah%20Kertas!%20Saya%20bingung%20pilih%20fisik%20atau%20digital,%20boleh%20konsultasi?"
           target="_blank"
           rel="noopener noreferrer"
           className="block w-full bg-blush py-6 px-6 text-center font-sans text-sm md:text-base font-medium uppercase tracking-widest text-charcoal hover:bg-rose hover:text-ivory transition-colors duration-300"

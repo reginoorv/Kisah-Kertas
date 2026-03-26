@@ -36,11 +36,11 @@ export default function HeroSection() {
         </div>
         
         <div className="fade-up flex items-center gap-4 md:gap-6 text-xs md:text-sm font-medium uppercase tracking-widest text-charcoal">
-          <span>500+ Pasangan</span>
+          <span>Desain Eksklusif</span>
           <div className="w-[1px] h-4 bg-copper opacity-50"></div>
-          <span>100+ Desain</span>
+          <span>Kualitas Premium</span>
           <div className="w-[1px] h-4 bg-copper opacity-50"></div>
-          <span>4.9★ Rating</span>
+          <span>Pelayanan Personal</span>
         </div>
       </div>
 

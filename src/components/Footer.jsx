@@ -9,8 +9,8 @@ export default function Footer() {
           {/* Left Column */}
           <div className="sm:col-span-2 lg:col-span-6">
             <a href="#" className="inline-flex items-baseline gap-1 text-3xl mb-6">
-              <span className="font-sans font-medium text-ivory tracking-tight">Kisah</span>
-              <span className="font-serif italic text-copper">Kertas</span>
+              <span className="font-sans font-medium text-ivory tracking-tight">Surat</span>
+              <span className="font-serif italic text-copper">Rasa</span>
             </a>
             <p className="font-sans text-[#B0A9A4] font-light text-sm max-w-sm mb-8 leading-relaxed">
               "Karena setiap undangan adalah rasa yang ingin kamu sampaikan."
@@ -55,7 +55,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t-[0.5px] border-[rgba(250,247,242,0.1)] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-sans text-xs text-[#B0A9A4] tracking-widest uppercase">
-            &copy; {new Date().getFullYear()} Kisah Kertas. All rights reserved.
+            &copy; {new Date().getFullYear()} Surat Rasa. All rights reserved.
           </p>
           <p className="font-sans text-xs text-[#B0A9A4] tracking-widest uppercase flex items-center gap-1">
             Made with <Heart size={12} fill="var(--copper)" color="var(--copper)" /> for every love story

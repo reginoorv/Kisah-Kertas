@@ -33,17 +33,16 @@ export default function About() {
       {/* Our Story Section */}
       <section className="py-24 px-6 bg-sand">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 lg:gap-24">
-          {/* Left: Abstract Illustration */}
+          {/* Left: Image */}
           <div className="w-full md:w-1/2 fade-up flex justify-center">
-            <div className="relative w-full max-w-[400px] aspect-[4/5] bg-ivory p-8 shadow-2xl">
-              <div className="absolute inset-0 border-[0.5px] border-copper/30 m-4"></div>
-              <svg viewBox="0 0 200 300" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M100 50 C150 50 180 100 180 150 C180 200 150 250 100 250 C50 250 20 200 20 150 C20 100 50 50 100 50 Z" stroke="#B5813A" strokeWidth="0.5" strokeDasharray="4 4" className="animate-[spin_60s_linear_infinite]" style={{ transformOrigin: 'center' }} />
-                <path d="M100 70 C130 70 160 110 160 150 C160 190 130 230 100 230 C70 230 40 190 40 150 C40 110 70 70 100 70 Z" stroke="#2D2926" strokeWidth="0.5" />
-                <circle cx="100" cy="150" r="40" fill="#F0E4DC" />
-                <path d="M85 150 Q100 130 115 150 Q100 170 85 150 Z" fill="#B5813A" opacity="0.8" />
-                <text x="100" y="280" fontFamily="Cormorant Garamond, serif" fontSize="12" fill="#8A8480" textAnchor="middle" fontStyle="italic">Est. 2022</text>
-              </svg>
+            <div className="relative w-full max-w-[400px] aspect-[4/5] bg-ivory p-4 shadow-2xl">
+              <div className="absolute inset-0 border-[0.5px] border-copper/30 m-4 z-10 pointer-events-none"></div>
+              <img 
+                src="/awal-mula.jpg" 
+                alt="Ruang kerja artisan Kisah Kertas" 
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
 
@@ -148,26 +147,17 @@ export default function About() {
             </a>
           </div>
 
-          {/* Right: Abstract Artisan SVG */}
+          {/* Right: Artisan Image */}
           <div className="w-full md:w-1/2 fade-up flex justify-center">
-            <div className="relative w-full max-w-[400px] aspect-square">
-              <svg viewBox="0 0 400 400" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Background circles */}
-                <circle cx="200" cy="200" r="180" fill="#B5813A" opacity="0.1" />
-                <circle cx="200" cy="200" r="140" fill="none" stroke="#B5813A" strokeWidth="0.5" strokeDasharray="2 4" className="animate-[spin_40s_linear_infinite_reverse]" style={{ transformOrigin: 'center' }} />
-                
-                {/* Abstract Hands/Tools */}
-                <path d="M120 280 L180 200 L160 180 L100 260 Z" fill="#D4A558" opacity="0.8" />
-                <path d="M280 120 L200 180 L180 160 L260 100 Z" fill="#FAF7F2" opacity="0.2" />
-                
-                {/* Paper/Card */}
-                <rect x="150" y="120" width="120" height="160" transform="rotate(15 210 200)" fill="#FAF7F2" />
-                <rect x="160" y="130" width="100" height="140" transform="rotate(15 210 200)" fill="none" stroke="#2D2926" strokeWidth="0.5" />
-                
-                {/* Wax Seal */}
-                <circle cx="210" cy="200" r="15" fill="#B5813A" />
-                <path d="M205 195 L215 205 M215 195 L205 205" stroke="#FAF7F2" strokeWidth="1" />
-              </svg>
+            <div className="relative w-full max-w-[400px] aspect-square rounded-full overflow-hidden shadow-2xl border-[0.5px] border-copper/30 p-2">
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <img 
+                  src="/dedikasi-artisan.jpg" 
+                  alt="Proses pembuatan undangan Kisah Kertas" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ export default function AdminLogin() {
           </div>
           <h1 className="font-serif text-3xl text-charcoal mb-2">Ruang Karya</h1>
           <p className="font-sans text-sm text-smoke text-center">
-            Akses khusus untuk mengelola katalog dan portofolio Kisah Kertas.
+            Akses khusus untuk mengelola katalog dan portofolio Surat Rasa.
           </p>
         </div>
 
@@ -52,7 +52,7 @@ export default function AdminLogin() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full border-b border-sand bg-transparent py-3 font-sans text-charcoal focus:outline-none focus:border-copper transition-colors"
-              placeholder="admin@kisahkertas.com"
+              placeholder="admin@suratrasa.com"
               required
             />
           </div>

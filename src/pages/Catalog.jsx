@@ -120,7 +120,7 @@ export default function Catalog() {
               Tim artisan kami siap mendengarkan cerita Anda dan merancang undangan yang benar-benar unik, khusus untuk hari bahagia Anda.
             </p>
             <a 
-              href="https://wa.me/6281234567890?text=Halo%20Kisah%20Kertas!%20Saya%20tertarik%20untuk%20membuat%20custom%20design%20undangan."
+              href="https://wa.me/6281234567890?text=Halo%20Surat%20Rasa!%20Saya%20tertarik%20untuk%20membuat%20custom%20design%20undangan."
               target="_blank"
               rel="noopener noreferrer"
               className="relative z-10 inline-block px-10 py-4 bg-charcoal text-ivory text-sm font-medium uppercase tracking-widest hover:bg-copper transition-colors duration-300 shadow-[8px_8px_0_rgba(181,129,58,0.2)] hover:shadow-[4px_4px_0_rgba(181,129,58,0.2)] hover:translate-y-1 hover:translate-x-1"

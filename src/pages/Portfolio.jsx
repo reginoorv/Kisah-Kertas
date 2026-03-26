@@ -333,7 +333,7 @@ export default function Portfolio() {
           <div className="mt-24 text-center fade-up">
             <h3 className="font-serif text-3xl text-charcoal mb-6">Tertarik dengan desain kami?</h3>
             <a 
-              href="https://wa.me/6281234567890?text=Halo%20Surat%20Rasa!%20Saya%20tertarik%20dengan%20portofolio%20kalian%20dan%20ingin%20konsultasi."
+              href="https://wa.me/6281234567890?text=Halo%20Kisah%20Kertas!%20Saya%20tertarik%20dengan%20portofolio%20kalian%20dan%20ingin%20konsultasi."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 bg-charcoal text-ivory text-sm font-medium uppercase tracking-widest hover:bg-copper transition-colors duration-300"

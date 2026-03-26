@@ -7,7 +7,7 @@ export default function CTASection() {
     <section className="relative py-32 px-6 bg-blush overflow-hidden" ref={ref}>
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <span className="font-script text-[25vw] text-charcoal opacity-5 select-none whitespace-nowrap">Surat Rasa</span>
+        <span className="font-script text-[25vw] text-charcoal opacity-5 select-none whitespace-nowrap">Kisah Kertas</span>
       </div>
 
       <div className="relative z-10 max-w-3xl mx-auto text-center fade-up">

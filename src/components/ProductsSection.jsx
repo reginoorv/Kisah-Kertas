@@ -1,13 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../lib/firebase';
 import useIntersection from '../hooks/useIntersection';
 import ProductCard from './ProductCard';
-import { products } from '../data/products';
 
 export default function ProductsSection() {
   const ref = useIntersection();
   const [activeTab, setActiveTab] = useState('semua');
   const [isAnimating, setIsAnimating] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'katalog'));
+        const data = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching catalog:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleTabChange = (tab) => {
     if (tab === activeTab) return;
@@ -18,12 +40,13 @@ export default function ProductsSection() {
     }, 200);
   };
 
+  // Limit to 6 products for the home page
   const filteredProducts = products.filter(p => {
     if (activeTab === 'semua') return true;
     if (activeTab === 'fisik') return p.type.includes('fisik');
     if (activeTab === 'digital') return p.type.includes('digital');
     return true;
-  });
+  }).slice(0, 6);
 
   return (
     <section id="koleksi" className="py-24 px-6 bg-ivory" ref={ref}>
@@ -55,15 +78,26 @@ export default function ProductsSection() {
         </div>
 
         {/* Grid */}
-        <div 
-          className={`fade-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-opacity duration-300 ${
-            isAnimating ? 'opacity-0' : 'opacity-100'
-          }`}
-        >
-          {filteredProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <div className="w-8 h-8 border-2 border-copper border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <div 
+            className={`fade-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-opacity duration-300 ${
+              isAnimating ? 'opacity-0' : 'opacity-100'
+            }`}
+          >
+            {filteredProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+            {filteredProducts.length === 0 && (
+              <div className="col-span-full py-12 text-center">
+                <p className="font-sans text-smoke">Belum ada produk di kategori ini.</p>
+              </div>
+            )}
+          </div>
+        )}
         
         <div className="fade-up mt-16 text-center">
           <Link 

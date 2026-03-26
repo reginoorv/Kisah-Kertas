@@ -78,16 +78,6 @@ export default function HeroSection() {
             <text x="200" y="286" fontFamily="Great Vibes, cursive" fontSize="18" fill="#FAF7F2" textAnchor="middle">KK</text>
           </svg>
         </div>
-
-        {/* Floating Badges */}
-        <div className="absolute top-24 right-8 md:right-16 bg-ivory px-4 py-2 shadow-sm border-[0.5px] border-copper/20 animate-[float_5s_ease-in-out_infinite_reverse]">
-          <span className="font-sans text-xs font-medium uppercase tracking-widest text-charcoal">✦ Koleksi Baru 2025</span>
-        </div>
-
-        <div className="absolute bottom-16 left-8 md:left-16 bg-charcoal p-4 shadow-xl max-w-[200px] animate-[float_7s_ease-in-out_infinite]">
-          <p className="font-sans text-[10px] uppercase tracking-widest text-copper mb-1">Desain Terbaru</p>
-          <p className="font-serif text-ivory text-lg">Koleksi Padi Emas</p>
-        </div>
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ export default function CTASection() {
     <section className="relative py-32 px-6 bg-blush overflow-hidden" ref={ref}>
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <span className="font-script text-[25vw] text-charcoal opacity-5 select-none whitespace-nowrap">Surat Rasa</span>
+        <span className="font-script text-[25vw] text-charcoal opacity-5 select-none whitespace-nowrap">Kisah Kertas</span>
       </div>
 
       <div className="relative z-10 max-w-3xl mx-auto text-center fade-up">
@@ -28,7 +28,7 @@ export default function CTASection() {
             Lihat Semua Koleksi
           </a>
           <a 
-            href="https://wa.me/6281234567890?text=Halo%20Surat%20Rasa!%20Saya%20tertarik%20untuk%20konsultasi."
+            href="https://wa.me/6281234567890?text=Halo%20Kisah%20Kertas!%20Saya%20tertarik%20untuk%20konsultasi."
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 border-[0.5px] border-charcoal text-charcoal text-sm font-medium uppercase tracking-widest hover:bg-charcoal hover:text-ivory transition-all duration-300"

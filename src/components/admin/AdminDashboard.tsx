@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import { LogOut, Image, BookOpen } from 'lucide-react';
+import AdminCatalog from './AdminCatalog';
+import AdminPortfolio from './AdminPortfolio';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<'katalog' | 'portofolio'>('katalog');
@@ -54,20 +56,7 @@ export default function AdminDashboard() {
       {/* Main Content */}
       <main className="flex-1 p-6 md:p-12 overflow-y-auto">
         <div className="max-w-5xl mx-auto">
-          <div className="flex justify-between items-center mb-10">
-            <h1 className="font-serif text-4xl text-charcoal">
-              {activeTab === 'katalog' ? 'Kelola Katalog' : 'Kelola Portofolio'}
-            </h1>
-            <button className="bg-copper text-ivory px-6 py-3 font-sans text-xs uppercase tracking-widest hover:bg-charcoal transition-colors">
-              + Tambah Baru
-            </button>
-          </div>
-
-          <div className="bg-white border-[0.5px] border-sand p-8 shadow-sm">
-            <p className="font-sans text-smoke text-center py-12">
-              Modul {activeTab} sedang dalam pengembangan. Data akan segera terhubung dengan Firebase.
-            </p>
-          </div>
+          {activeTab === 'katalog' ? <AdminCatalog /> : <AdminPortfolio />}
         </div>
       </main>
     </div>

@@ -6,7 +6,7 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      quote: "Undangannya melebihi ekspektasi kami. Kertasnya mewah, semua tamu memuji. Tim Surat Rasa sangat sabar dalam proses revisi.",
+      quote: "Undangannya melebihi ekspektasi kami. Kertasnya mewah, semua tamu memuji. Tim Kisah Kertas sangat sabar dalam proses revisi.",
       name: "Aisha & Daffa",
       location: "Bandung, Oktober 2024",
       initials: "AD"

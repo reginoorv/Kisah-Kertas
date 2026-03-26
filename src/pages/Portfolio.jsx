@@ -1,13 +1,34 @@
 import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../lib/firebase';
 import useIntersection from '../hooks/useIntersection';
 import { ArrowRight, X } from 'lucide-react';
 
 export default function Portfolio() {
   const ref = useIntersection();
   const [selectedItem, setSelectedItem] = useState(null);
+  const [firebaseItems, setFirebaseItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    const fetchPortfolio = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'portofolio'));
+        const data = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setFirebaseItems(data);
+      } catch (error) {
+        console.error("Error fetching portfolio:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPortfolio();
   }, []);
 
   useEffect(() => {
@@ -221,6 +242,16 @@ export default function Portfolio() {
     }
   ];
 
+  const allItems = [...firebaseItems.map(item => ({
+    id: item.id,
+    title: item.coupleName,
+    client: item.coupleName,
+    type: item.type === 'fisik' ? 'Undangan Fisik' : 'Undangan Digital',
+    desc: `${item.date} • ${item.location}`,
+    bg: 'bg-sand',
+    imageUrl: item.imageUrl
+  })), ...portfolioItems];
+
   return (
     <main className="bg-ivory min-h-screen pt-24" ref={ref}>
       {/* Hero Section */}
@@ -242,7 +273,11 @@ export default function Portfolio() {
       <section className="pb-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-            {portfolioItems.map((item, index) => (
+            {loading ? (
+              <div className="col-span-full flex justify-center py-12">
+                <div className="w-8 h-8 border-2 border-copper border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            ) : allItems.map((item, index) => (
               <div 
                 key={item.id} 
                 className="group flex flex-col cursor-pointer fade-up" 
@@ -254,9 +289,13 @@ export default function Portfolio() {
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-300 z-10"></div>
                   
-                  {/* SVG Mockup */}
+                  {/* SVG Mockup or Image */}
                   <div className="relative z-0 w-full max-w-[220px] h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-                    {item.mockup}
+                    {item.imageUrl ? (
+                      <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover shadow-xl" referrerPolicy="no-referrer" />
+                    ) : (
+                      item.mockup
+                    )}
                   </div>
                 </div>
 
@@ -288,7 +327,7 @@ export default function Portfolio() {
           <div className="mt-24 text-center fade-up">
             <h3 className="font-serif text-3xl text-charcoal mb-6">Tertarik dengan desain kami?</h3>
             <a 
-              href="https://wa.me/6281234567890?text=Halo%20Surat%20Rasa!%20Saya%20tertarik%20dengan%20portofolio%20kalian%20dan%20ingin%20konsultasi."
+              href="https://wa.me/6281234567890?text=Halo%20Kisah%20Kertas!%20Saya%20tertarik%20dengan%20portofolio%20kalian%20dan%20ingin%20konsultasi."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 bg-charcoal text-ivory text-sm font-medium uppercase tracking-widest hover:bg-copper transition-colors duration-300"
@@ -320,7 +359,9 @@ export default function Portfolio() {
 
             {/* Left: Mockup */}
             <div className={`w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 min-h-[300px] sm:min-h-[400px] lg:min-h-[600px] ${selectedItem.bg}`}>
-              {selectedItem.type === "Undangan Digital" ? (
+              {selectedItem.imageUrl ? (
+                <img src={selectedItem.imageUrl} alt={selectedItem.title} className="w-full max-w-[300px] object-cover shadow-2xl" referrerPolicy="no-referrer" />
+              ) : selectedItem.type === "Undangan Digital" ? (
                 <div className="relative w-[260px] sm:w-[280px] h-[520px] sm:h-[560px] bg-[#1A1A1A] rounded-[2.5rem] p-2 shadow-2xl ring-1 ring-white/10 flex-shrink-0 transform transition-transform duration-700 hover:scale-[1.02]">
                   {/* Phone Notch */}
                   <div className="absolute top-4 inset-x-0 h-6 flex justify-center z-20 pointer-events-none">
@@ -360,7 +401,7 @@ export default function Portfolio() {
               </p>
 
               <a 
-                href={`https://wa.me/6281234567890?text=Halo%20Surat%20Rasa!%20Saya%20tertarik%20dengan%20desain%20${encodeURIComponent(selectedItem.title)}%20(${encodeURIComponent(selectedItem.type)}).%20Boleh%20minta%20info%20lebih%20lanjut?`}
+                href={`https://wa.me/6281234567890?text=Halo%20Kisah%20Kertas!%20Saya%20tertarik%20dengan%20desain%20${encodeURIComponent(selectedItem.title)}%20(${encodeURIComponent(selectedItem.type)}).%20Boleh%20minta%20info%20lebih%20lanjut?`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block w-full text-center px-8 py-4 border-[0.5px] border-charcoal bg-charcoal text-ivory text-sm font-medium uppercase tracking-widest hover:bg-transparent hover:text-charcoal transition-all duration-300"

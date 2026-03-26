@@ -7,12 +7,6 @@ export default function HeroSection() {
     <section className="relative min-h-screen pt-24 lg:pt-0 flex flex-col lg:flex-row overflow-hidden" ref={ref}>
       {/* Left Column */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 md:px-16 lg:px-24 py-16 lg:py-0 z-10">
-        <div className="fade-up">
-          <span className="inline-block font-sans text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-copper mb-6">
-            ✦ Undangan Pernikahan Premium
-          </span>
-        </div>
-        
         <h1 className="fade-up text-charcoal leading-[1.1] mb-8">
           <span className="block font-script text-5xl md:text-6xl lg:text-7xl mb-2 text-charcoal opacity-90">Ceritakan</span>
           <span className="block font-serif font-light text-[clamp(2.5rem,5vw,4rem)]">Kisah Cinta Kalian</span>
@@ -32,7 +26,7 @@ export default function HeroSection() {
             Lihat Koleksi
           </a>
           <a 
-            href="https://wa.me/6281234567890?text=Halo%20Surat%20Rasa!%20Saya%20ingin%20konsultasi%20undangan." 
+            href="https://wa.me/6281234567890?text=Halo%20Kisah%20Kertas!%20Saya%20ingin%20konsultasi%20undangan." 
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 border-[0.5px] border-charcoal text-charcoal text-sm font-medium uppercase tracking-widest text-center hover:bg-charcoal hover:text-ivory transition-all duration-300"
@@ -54,7 +48,7 @@ export default function HeroSection() {
       <div className="w-full lg:w-1/2 bg-sand relative min-h-[500px] lg:min-h-screen flex items-center justify-center p-8">
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
-          <span className="font-script text-[30vw] md:text-[20vw] text-copper opacity-5 select-none">rasa</span>
+          <span className="font-script text-[30vw] md:text-[20vw] text-copper opacity-5 select-none">kertas</span>
         </div>
 
         {/* Floating Envelope SVG */}
@@ -81,7 +75,7 @@ export default function HeroSection() {
             {/* Wax seal */}
             <circle cx="200" cy="280" r="25" fill="#B5813A" />
             <circle cx="200" cy="280" r="20" fill="none" stroke="#FAF7F2" strokeWidth="0.5" opacity="0.5" />
-            <text x="200" y="286" fontFamily="Great Vibes, cursive" fontSize="18" fill="#FAF7F2" textAnchor="middle">SR</text>
+            <text x="200" y="286" fontFamily="Great Vibes, cursive" fontSize="18" fill="#FAF7F2" textAnchor="middle">KK</text>
           </svg>
         </div>
 

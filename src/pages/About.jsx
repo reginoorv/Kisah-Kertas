@@ -18,7 +18,7 @@ export default function About() {
         
         <div className="max-w-4xl mx-auto relative z-10">
           <span className="inline-block font-sans text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-copper mb-6">
-            Tentang Surat Rasa
+            Tentang Kisah Kertas
           </span>
           <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl text-charcoal font-light mb-8 leading-tight">
             Merangkai Cerita, <br />
@@ -54,10 +54,10 @@ export default function About() {
             </h2>
             <div className="space-y-6 font-sans text-smoke text-base md:text-lg font-light leading-relaxed">
               <p>
-                Surat Rasa lahir dari sebuah ruang kerja kecil di sudut kota, berawal dari kecintaan kami pada seni kertas, tipografi, dan cerita-cerita romantis. Kami menyadari bahwa di era yang serba cepat ini, sentuhan personal seringkali terlupakan.
+                Kisah Kertas lahir dari sebuah ruang kerja kecil di sudut kota, berawal dari kecintaan kami pada seni kertas, tipografi, dan cerita-cerita romantis. Kami menyadari bahwa di era yang serba cepat ini, sentuhan personal seringkali terlupakan.
               </p>
               <p>
-                Nama "Surat Rasa" sendiri dipilih karena kami ingin mengembalikan esensi dari sebuah undangan: sebagai surat yang membawa rasa bahagia, harapan, dan doa dari kedua mempelai kepada orang-orang terkasih.
+                Nama "Kisah Kertas" sendiri dipilih karena kami ingin mengembalikan esensi dari sebuah undangan: sebagai surat yang membawa rasa bahagia, harapan, dan doa dari kedua mempelai kepada orang-orang terkasih.
               </p>
               <p>
                 Setiap lipatan kertas, setiap guratan tinta emas, dan setiap piksel dalam desain digital kami kerjakan dengan ketelitian tingkat tinggi. Karena bagi kami, karya yang baik adalah karya yang memiliki jiwa.
@@ -183,7 +183,7 @@ export default function About() {
             Konsultasikan impian pernikahan Anda dengan tim kami. Kami siap membantu mewujudkan undangan yang sempurna untuk hari istimewa Anda.
           </p>
           <a 
-            href="https://wa.me/6281234567890?text=Halo%20Surat%20Rasa!%20Saya%20ingin%20konsultasi%20mengenai%20undangan%20pernikahan%20saya."
+            href="https://wa.me/6281234567890?text=Halo%20Kisah%20Kertas!%20Saya%20ingin%20konsultasi%20mengenai%20undangan%20pernikahan%20saya."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-10 py-4 bg-charcoal text-ivory text-sm font-medium uppercase tracking-widest hover:bg-copper transition-colors duration-300 shadow-[8px_8px_0_rgba(181,129,58,0.2)] hover:shadow-[4px_4px_0_rgba(181,129,58,0.2)] hover:translate-y-1 hover:translate-x-1"
